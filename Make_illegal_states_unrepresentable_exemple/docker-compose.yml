@@ -1,0 +1,7 @@
+version: latest
+
+services:
+  app:
+    image: openjdk:latest
+    build:
+      dockerfile: Dockerfile
