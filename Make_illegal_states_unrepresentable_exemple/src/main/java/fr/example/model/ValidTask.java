@@ -10,4 +10,8 @@ public class ValidTask extends Task{
     public String getDescription() {
         return description;
     }
+
+    public static boolean validDescription(String description) {
+        return !(description == null || description.trim().isEmpty());
+    }
 }

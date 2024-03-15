@@ -38,7 +38,7 @@ public class Main {
                     break;
 
                 case "3":
-                    System.out.println("Aurevoir");
+                    System.out.println("Au revoir");
                     break;
 
                 default:

@@ -14,6 +14,7 @@ public class TaskList {
             tasks.add((ValidTask) task);
         } else {
             System.out.println("impossible d'ajouter la tache la description n'est pas bonne");
+            throw new IllegalArgumentException("La description ne peut pas être vide");
         }
     }
 
