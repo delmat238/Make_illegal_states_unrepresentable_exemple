@@ -2,9 +2,11 @@ package fr.example;
 
 import fr.example.model.Task;
 import fr.example.model.TaskList;
+import fr.example.model.ValidTask;
 
 import java.util.Objects;
 
+import static fr.example.model.Util.creerTask;
 import static fr.example.model.Util.saisie;
 
 public class Main {
@@ -24,23 +26,21 @@ public class Main {
 
             switch (text) {
                 case "1":
-                    try {
-                        System.out.print("saisissez la description de la tache : ");
-                        tasks.addTask(new Task(saisie()));
-                    } catch (IllegalArgumentException e) {
-                        System.out.println(e);
-                    }
+                    System.out.print("saisissez la description de la tache : ");
+                    Task task = creerTask(saisie());
+                    tasks.addTask(task);
                     break;
+
                 case "2":
-
-                    for (Task task : tasks.getTasks()) {
-                        System.out.println(" - " + task.getDescription());
-
+                    for (ValidTask t : tasks.getTasks()) {
+                        System.out.println(" - " + t.getDescription());
                     }
                     break;
+
                 case "3":
                     System.out.println("Aurevoir");
                     break;
+
                 default:
                     System.out.println("Erreur apprenez à lire !");
                     break;
