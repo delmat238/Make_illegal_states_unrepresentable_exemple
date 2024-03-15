@@ -3,27 +3,52 @@ package fr.example;
 import fr.example.model.Task;
 import fr.example.model.TaskList;
 
+import java.util.Objects;
+
+import static fr.example.model.Util.saisie;
+
 public class Main {
     public static void main(String[] args) {
-        TaskList taskList = new TaskList();
-        Task task1 = null;
 
-        try {
-            task1 = new Task("Faire les courses");
-            taskList.addTask(task1);
-            Task task2 = new Task("Payer les factures");
-            taskList.addTask(task2);
-            Task task3 = new Task(""); // Tâche avec une description vide, déclenchera une exception
-            taskList.addTask(task3);
+        String text;
+        TaskList tasks = new TaskList();
 
-        } catch (IllegalArgumentException e) {
-            System.out.println("La description d'une tache ne peut pas etre vide : " + e.getMessage());
-        }
+        do {
+            System.out.println("\n1. Creer une tache");
+            System.out.println("2. Afficher les taches");
+            System.out.println("3. Quitter");
 
-        for (Task task : taskList.getTasks()) {
-            System.out.println(task.getDescription());
-        }
+            System.out.print("Faites votre choix : ");
+            text = saisie();
+            System.out.println();
 
-        task1.markAsCompleted();
+            switch (text) {
+                case "1":
+                    try {
+                        System.out.print("saisissez la description de la tache : ");
+                        tasks.addTask(new Task(saisie()));
+                    } catch (IllegalArgumentException e) {
+                        System.out.println(e);
+                    }
+                    break;
+                case "2":
+
+                    for (Task task : tasks.getTasks()) {
+                        System.out.println(" - " + task.getDescription());
+
+                    }
+                    break;
+                case "3":
+                    System.out.println("Aurevoir");
+                    break;
+                default:
+                    System.out.println("Erreur apprenez à lire !");
+                    break;
+
+            }
+
+
+        } while (!Objects.equals(text, "3"));
+
     }
 }

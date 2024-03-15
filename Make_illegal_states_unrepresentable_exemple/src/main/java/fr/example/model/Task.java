@@ -1,11 +1,11 @@
 package fr.example.model;
 
 public class Task {
-    private String description;
+    private final String description;
     private boolean completed;
 
     public Task(String description) throws IllegalArgumentException {
-        if (description == null || description.isEmpty()) {
+        if (description == null || description.trim().isEmpty()) {
             throw new IllegalArgumentException("La description ne peut pas être vide");
         }
         this.description = description;
